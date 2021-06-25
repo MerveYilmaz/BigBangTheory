@@ -16,19 +16,8 @@
 
   <div class="album text-muted">
     <div class="container">
-      <div class="row">
-        <div class="card">
-          <img src="https://m.media-amazon.com/images/M/MV5BY2FmZTY5YTktOWRlYy00NmIyLWE0ZmQtZDg2YjlmMzczZDZiXkEyXkFqcGdeQXVyNjg4NzAyOTA@._V1_SX300.jpg" alt="Card image cap">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little
-            bit longer.</p>
-        </div>
-        <div class="row">
-          <div class="card">
-            <img src="https://via.placeholder.com/350x280" alt="Card image cap">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little
-              bit longer.</p>
-          </div>
-        </div>
+      <div class="row" id="moviecards">
+        
       </div>
     </div>
   </div>
@@ -44,6 +33,22 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script type="text/javascript">
+  $(document).ready(function(){  
+    $.ajax({
+      url: "https://omdbapi.com/?s=Big+Bang+Theory&apikey=852159f0",
+      dataType: "json"
+    }).done(function(result) {
+      $(result["Search"]).each(function(){
+        console.log($(this));
+        var urlforposter = $(this)[0].Poster
+        if(urlforposter == "N/A"){
+          urlforposter = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+        }
+        $("#moviecards").append("<div class='card' id='serie'><img src='"+ urlforposter + "' alt='Card image cap'><h3 id='serietitle'>" + $(this)[0].Title + "</h3><p class='card-text'>Type: "+ $(this)[0].Type + "</p><p class='card-text'>Year: "+ $(this)[0].Year + "</p><p class='card-text'>ImdbID: "+ $(this)[0].imdbID + "</p></div>")
+      });
+    });
+  });
+</script>
