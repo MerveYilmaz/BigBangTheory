@@ -13,7 +13,7 @@ gem 'yarn'
 gem 'boostrap-sass'
 gem 'bootstrap-switch-rails'
 gem 'browser'
-gem 'rspec-rails'
+gem "rspec-rails"
 gem 'bootstrap-sass', '3.3.6'
 gem 'autoprefixer-rails'
 gem 'sprockets', '3.7.2'
