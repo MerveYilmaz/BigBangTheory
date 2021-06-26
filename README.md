@@ -29,11 +29,12 @@ Things that could be changed:
   - split the script into a javascript file
   - maybe create a database for series and movies to order and view them faster
 
+Things that had to be added:
+  - View tests (tried but not worked, first time writing a test without database. 
+                more used rspec)
+
 Used time for programming: 3h
               configuration: longer time, because of struggeling of the gems and jquery
 
-Things you may want to cover:
-
-* How to run the test suite
 
 
